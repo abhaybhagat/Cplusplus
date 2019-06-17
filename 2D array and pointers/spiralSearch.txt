@@ -1,0 +1,72 @@
+#include <iostream>
+using namespace std;
+
+void initMatrix(int a[][10],int R,int C) { 
+    int value = 1;
+    for(int i=0;i<R;i++) {
+        for(int j=0;j<C;j++) {
+            a[i][j] = value++;
+        }
+    }
+}
+void printMatrix(int a[][10],int R,int C) {
+    for(int i=0;i<R;i++) {
+        for(int j=0;j<C;j++) {
+            cout<< a[i][j] <<" ";
+        }
+        cout << endl;
+    }
+}
+void  stairCaseSearch(int a[][10],int R,int C,int key) {
+    int i = 0,j = C-1;
+    while(i<R && j>=0) {
+        if(a[i][j]==key) {
+            cout<<"Element Found (" <<i<<","<<j<<")"<<endl;
+            return;
+        }
+        else if(a[i][j]>key) {
+            j--;
+        }
+        else {
+            i++;
+        }
+    }
+    cout<<"Element Not Found"<<endl;
+}
+void spiralSearch(int a[][10],int R,int C) {
+    int startRow=0,endRow = R-1,startCol = 0,endCol = C-1;
+    while(startRow<=endRow && startCol<=endCol) {
+    for(int i=startCol;i<=endCol;i++) {
+        cout<<a[startRow][i] <<" ";
+    }
+    startRow++;
+    for(int i=startRow;i<=endRow;i++) {
+        cout<<a[i][endCol] <<" ";
+    }
+    endCol--;
+    if(endRow>startRow) {
+    for(int i=endCol;i>=startCol;i--) {
+        cout<<a[endRow][i]<<" ";
+    }
+    endRow--;
+    }
+    if(endCol>startCol) {
+    for(int i=endRow;i>=startRow;i--) {
+        cout<<a[i][startCol]<<" ";
+    }
+    startCol++;
+    }
+    }
+}
+
+
+int main() {
+    int a[10][10];
+    int R,C;
+    cin>>R>>C;
+    int key;
+    cin >> key;
+    initMatrix(a,R,C);
+    printMatrix(a,R,C);
+    spiralSearch(a,R,C);
+}

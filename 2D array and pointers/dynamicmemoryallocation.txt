@@ -1,0 +1,20 @@
+#include <iostream>
+#include<vector>
+#include <algorithm>
+using namespace std;
+int main(){
+    int *p = new int(30);
+    
+    int *q = new int;
+    cout<< *q <<endl;
+    //Dynamically allocating 1D array
+    int *arr = new int[30];
+    for(int i=0;i<30;i++) {
+        arr[i] = i;
+    }
+    delete p;
+    delete [] arr;
+    for(int i=0;i<30;i++) {
+        cout<<arr[i]<<' ';
+    }
+}
